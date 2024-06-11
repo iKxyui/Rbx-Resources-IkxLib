@@ -66,8 +66,7 @@ function ApplyImpulse:SetCurve(Character,Object,Properties)
 		NodePart2:Destroy()
 	end
 
-	task.spawn(function()
-		task.wait(2/60)
+	task.defer(function()
 		while true do
 			if EventFired == true then
 				break
