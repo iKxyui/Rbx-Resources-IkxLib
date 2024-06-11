@@ -1,4 +1,4 @@
---
+--[[
 
 Script Type : Module
 Script Name : Standard
