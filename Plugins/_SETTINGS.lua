@@ -1,13 +1,6 @@
-local Settings = {
-    ["TimeService"] = {
-        ["DelayType"] = "Seconds"; -- Options: Frames / Seconds
-    };
-    ["Tools"] = {
-        ["UseAdditionalArguments"] = true; -- Options: true / false
-    };
-    ["RemoteInvoke"] = {
-        ["UseAdditionalArguments"] = true; -- Options: true / false
-    };
-};
+local _Settings_LUA = {
+	["Directory"] = game.ReplicatedStorage.Plugins; -- Set this setting to whereever you place the Plugins Folder
+	["TimeServiceMeasurement"] = "Frames"; -- Options: Seconds, Frames
+}
 
-return Settings
+return _Settings_LUA
