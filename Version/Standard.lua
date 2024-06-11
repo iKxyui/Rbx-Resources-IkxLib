@@ -17,6 +17,7 @@ ApplyImpulse:SetCurve - Used to move objects with a curvature
 	Example:
 		local APProperties = {
 		["Parent"] = Character;
+		["DestroyOnContact"] = true;
 		["Gravity"] = 30; -- Set nil to use the games current gravity
 		["Duration"] = 1;
 		["Offsets"] = {

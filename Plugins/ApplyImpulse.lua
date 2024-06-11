@@ -67,6 +67,7 @@ function ApplyImpulse:SetCurve(Character,Object,Properties)
 	end
 
 	task.defer(function()
+		if Properties.DestroyOnContact == true then return end
 		while true do
 			if EventFired == true then
 				break
