@@ -19,7 +19,7 @@ local DelayTypes = {
 	["Seconds"] = function(Int)
 		Int = Int or 0
 	end;
-	["Frame"] = function(Int)
+	["Frames"] = function(Int)
 		Int = (Int/60) or 0
 	end;
 }

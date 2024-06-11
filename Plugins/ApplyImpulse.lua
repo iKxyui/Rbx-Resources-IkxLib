@@ -11,6 +11,7 @@ local ApplyImpulse = {
 
 function ApplyImpulse:SetCurve(Character,Object,Properties)
 	Properties.Gravity = Properties.Gravity or workspace.Gravity
+	Properties.DestroyOnContact = Properties.DestroyOnContact or false
 
 	local SetPath = Instance.new("Model")
 	SetPath.Name = "SetPath"
