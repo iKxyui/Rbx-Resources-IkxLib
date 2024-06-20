@@ -10,27 +10,22 @@ local TimeService = {
 	RS = {};
 }
 
-local PlSettings = require(script.Parent._Settings)
+local PlSettings = require(script.Parent._SETTINGS)
 
 local DelayTypes = {
 	[""] = function(Int)
-		Int = Int or 0
+		return Int or 0
 	end;
 	["Seconds"] = function(Int)
-		Int = Int or 0
+		return Int or 0
 	end;
 	["Frames"] = function(Int)
-		Int = (Int/60) or 0
+		return (Int/60) or 0
 	end;
 }
 
-local function SetDelType(Int)
-	DelayTypes[PlSettings.TimeServiceMeasurement](Int)
-end
-
 function TimeService.OS:SetDelay(Int)
-	Int = Int or 0
-	SetDelType(Int)
+	Int = DelayTypes[PlSettings.TimeServiceMeasurement](Int)
 	local OSTime = os.clock()
 	local DelayTime = Int - 0.003
 	while true do
@@ -42,8 +37,7 @@ function TimeService.OS:SetDelay(Int)
 end
 
 function TimeService.RS:SetDelay(Int)
-	Int = Int or 0
-	SetDelType(Int)
+	Int = DelayTypes[PlSettings.TimeServiceMeasurement](Int)
 	local Delta = 0
 	repeat Delta = Delta + game:GetService("RunService").Heartbeat:Wait() until Delta > Int
 end
