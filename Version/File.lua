@@ -5,8 +5,4 @@ Script Name : File
 
 ]]--
 
-local FileVersion = {
-	["Version"] = 4;
-}
-
-return FileVersion
+return 4
