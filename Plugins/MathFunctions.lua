@@ -11,6 +11,11 @@ function MathFunctions:RoundNumber(Number,DecimalPlaces)
 	return tonumber(string.format("%." .. (DecimalPlaces or 0) .. "f", Number))
 end
 
+function MathFunctions:GetPercentageFromLowToHigh(x,Low,High)
+	local Range = High - Low
+	return math.clamp(1 - (x - Low) / Range, 0, 1)
+end
+
 function MathFunctions:SetMinimum(Num,MinNum)
 	Num = Num or 0
 	MinNum = MinNum or 0
