@@ -13,7 +13,7 @@ function FunctionValueBase:CreateFunctionFromValueBase(ValueObject: Instance,Fun
     local Thread = coroutine.wrap(Function)
     if ValueObject:IsA("ValueBase") then
         print((ValueObject::IndexableValueBase).Value)
-	    Thread(...)
+        Thread(...)
     end
 end
 
