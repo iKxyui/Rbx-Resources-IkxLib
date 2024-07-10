@@ -8,6 +8,7 @@ Script Name : TimeService
 local TimeService = {
 	OS = {};
 	RS = {};
+	Functions = {};
 }
 
 local PlSettings = require(script.Parent._SETTINGS)
@@ -40,6 +41,28 @@ function TimeService.RS:SetDelay(Int)
 	Int = DelayTypes[PlSettings.TimeServiceMeasurement](Int)
 	local Delta = 0
 	repeat Delta = Delta + game:GetService("RunService").Heartbeat:Wait() until Delta > Int
+end
+
+function TimeService.Functions:DisplayTimeFromInt(Time)
+	Time = Time or 0
+	local Days = math.floor(Time/86400)
+	local Remaining = Time % 86400
+	local Hours = math.floor(Remaining/3600)
+	Remaining = Remaining % 3600
+	local Minutes = math.floor(Remaining/60)
+	Remaining = Remaining % 60
+	local Seconds = Remaining
+	if (Hours < 10) then
+		Hours = "0" .. tostring(Hours)
+	end
+	if (Minutes < 10) then
+		Minutes = "0" .. tostring(Minutes)
+	end
+	if (Seconds < 10) then
+		Seconds = "0" .. tostring(Seconds)
+	end
+	local SetTime = tostring(Days)..':'..Hours..':'..Minutes..':'..Seconds
+	return SetTime
 end
 
 return TimeService
