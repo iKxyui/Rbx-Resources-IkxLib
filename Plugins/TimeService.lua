@@ -43,7 +43,7 @@ function TimeService.RS:SetDelay(Int)
 	repeat Delta = Delta + game:GetService("RunService").Heartbeat:Wait() until Delta > Int
 end
 
-function TimeService.Functions:DisplayTimeFromInt(Time)
+function TimeService.Functions:DisplayTimeFromInt64(Time)
 	Time = Time or 0
 	local Days = math.floor(Time/86400)
 	local Remaining = Time % 86400
