@@ -5,8 +5,6 @@ Script Name : Standard
 
 ]]--
 
-local Standard = {}
-
 --[=[
 
 [AdvancedObjectScale]
@@ -54,6 +52,13 @@ TimeService.RS:SetDelay - Uses Client Hardware to measure the delay timer
 
 [Tools]
 Tools:SetModule - Sets a module with its additional arguments in place
+Tools:ApplyFunctionToObjectGroup - Sets a function to a group of objects in a table, returns the object found in the search loop
+	Search Arguments: Name, IsA, Tag
+	Example:
+	Tools:ApplyFunctionToObjectGroup(workspace,{Name = "Baseplate";},function(Obj)
+		print("works")
+		Obj:Destroy()
+	end)
 
 [Settings]
 Settings.Directory - Sets Directory for the Plugins Folder
@@ -61,4 +66,4 @@ Settings.TimeServiceMeasurement - Sets the measurement type of delay that Plugin
 
 -]=]
 
-return Standard
+return "Standard.lua"

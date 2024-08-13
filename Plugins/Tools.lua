@@ -7,6 +7,8 @@ Script Name : Tools
 
 local Tools = {UI = {}}
 
+local RunService = game:GetService("RunService")
+
 function Tools.UI:ScaleToOffset(Scale)
 	local ViewPortSize = workspace.Camera.ViewportSize
 	return ({ViewPortSize.X * Scale[1],ViewPortSize.Y * Scale[2]})
@@ -29,8 +31,25 @@ function Tools:SetThreadToBuiltInFunction(SetBuiltInFunction,...)
 	Thread(...)
 end
 
+function Tools:ApplyFunctionToObjectGroup(Group,SearchFor,...)
+	SearchFor = SearchFor or {}
+	for _,GetChild in pairs(Group:GetChildren()) do
+		if (SearchFor.Name ~= nil and GetChild.Name == SearchFor.Name) then
+			task.spawn(...,GetChild)
+			continue
+		end
+		if (SearchFor.IsA ~= nil and GetChild:IsA(SearchFor.IsA)) then
+			task.spawn(...,GetChild)
+			continue
+		end
+		if (SearchFor.Tag ~= nil and GetChild:HasTag(SearchFor.Tag)) then
+			task.spawn(...,GetChild)
+		end
+	end
+end
+
 function Tools:SetDeltaStepToLoopFoundation()
-	game:GetService("RunService").Stepped:Wait()
+	RunService.PreSimulation:Wait()
 end
 
 return Tools
