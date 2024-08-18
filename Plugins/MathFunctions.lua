@@ -5,6 +5,8 @@ Script Name : MathFunctions
 
 ]]--
 
+local LuaMath = math
+
 local MathFunctions = {}
 
 function MathFunctions:RoundNumber(Number,DecimalPlaces)
@@ -13,7 +15,11 @@ end
 
 function MathFunctions:GetPercentageFromLowToHigh(x,Low,High)
 	local Range = High - Low
-	return math.clamp(1 - (x - Low) / Range, 0, 1)
+	return LuaMath.clamp(1 - (x - Low) / Range, 0, 1)
+end
+
+function MathFunctions:GenerateRandomSeed()
+	return LuaMath.floor(os.clock()*1000000)
 end
 
 function MathFunctions:SetMinimum(Num,MinNum)
