@@ -46,6 +46,9 @@ RemoteInvoke:InvokeAllClients - Uses the same functionality as Remote:FireAllCli
 [Resize]
 Increases, Decreases, Divides, and Multiplies Objects in a Model Group
 
+[Services]
+Gets a service using MonoBehavior (Eliminates the use of "game:GetService" over and over)
+
 [TimeService]
 TimeService.OS:SetDelay - Uses Operating System (OS) to measure the delay timer
 TimeService.RS:SetDelay - Uses Client Hardware to measure the delay timer

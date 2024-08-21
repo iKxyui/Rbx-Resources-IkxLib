@@ -35,38 +35,22 @@ end
 
 function Resize.IncrementSize(Model: Model, Size: Vector3, DontAffectSize: ArrayOfParts?, DontAffectPosition: ArrayOfParts?)
 	local PrimaryPart: BasePart? = Model.PrimaryPart
-	if PrimaryPart then
-		Resize.SetSize(Model, PrimaryPart.Size + Size, DontAffectSize, DontAffectPosition)
-	else
-		error("Model needs a primary part to be resized.")
-	end
+	Resize.SetSize(Model, PrimaryPart.Size + Size, DontAffectSize, DontAffectPosition)
 end
 
 function Resize.DecreaseSize(Model: Model, Size: Vector3, DontAffectSize: ArrayOfParts?, DontAffectPosition: ArrayOfParts?)
 	local PrimaryPart: BasePart? = Model.PrimaryPart
-	if PrimaryPart then
-		Resize.SetSize(Model, PrimaryPart.Size - Size, DontAffectSize, DontAffectPosition)
-	else
-		error("Model needs a primary part to be resized.")
-	end
+	Resize.SetSize(Model, PrimaryPart.Size - Size, DontAffectSize, DontAffectPosition)
 end
 
 function Resize.MultiplySize(Model: Model, Size: Vector3, DontAffectSize: ArrayOfParts?, DontAffectPosition: ArrayOfParts?)
 	local PrimaryPart: BasePart? = Model.PrimaryPart
-	if PrimaryPart then
-		Resize.SetSize(Model, PrimaryPart.Size * Size, DontAffectSize, DontAffectPosition)
-	else
-		error("Model needs a primary part to be resized.")
-	end
+	Resize.SetSize(Model, PrimaryPart.Size * Size, DontAffectSize, DontAffectPosition)
 end
 
 function Resize.DivideSize(Model: Model, Size: Vector3, DontAffectSize: ArrayOfParts?, DontAffectPosition: ArrayOfParts?)
 	local PrimaryPart: BasePart? = Model.PrimaryPart
-	if PrimaryPart then
-		Resize.SetSize(Model, PrimaryPart.Size / Size, DontAffectSize, DontAffectPosition)
-	else
-		error("Model needs a primary part to be resized.")
-	end
+	Resize.SetSize(Model, PrimaryPart.Size / Size, DontAffectSize, DontAffectPosition)
 end
 
 return Resize
