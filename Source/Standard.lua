@@ -48,7 +48,12 @@ Increases, Decreases, Divides, and Multiplies Objects in a Model Group
 
 [Services]
 Gets a service using MonoBehavior (Eliminates the use of "game:GetService" over and over)
-
+	Example:
+		local Services = require(game.ReplicatedStorage.Services):MonoBehavior()
+		Services:Require("RunService").PreRender:Connect(function(DeltaTime)
+			print(DeltaTime)
+		end)
+		
 [TimeService]
 TimeService.OS:SetDelay - Uses Operating System (OS) to measure the delay timer
 TimeService.RS:SetDelay - Uses Client Hardware to measure the delay timer
