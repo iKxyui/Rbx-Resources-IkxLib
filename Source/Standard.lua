@@ -59,7 +59,9 @@ TimeService.OS:SetDelay - Uses Operating System (OS) to measure the delay timer
 TimeService.RS:SetDelay - Uses Client Hardware to measure the delay timer
 
 [Tools]
-Tools:SetModule - Sets a module with its additional arguments in place
+Tools.TableMethods:SetModuleKeyOrder - Creates a proxy table that tracks the key order
+Tools.TableMethods:GetOrderedArray - Returns a copy array from the Key order, the new array will have the values of Table in corresponse to the KeyOrder
+Tools:SetModule - Sets a modules function with its additional arguments
 Tools:ApplyFunctionToObjectGroup - Sets a function to a group of objects in a table, returns the object found in the search loop
 	Search Arguments: Name, IsA, Tag
 	Example:

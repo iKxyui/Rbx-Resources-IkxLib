@@ -43,10 +43,13 @@ function TimeService.RS:SetDelay(Int)
 	repeat Delta = Delta + game:GetService("RunService").Heartbeat:Wait() until Delta > Int
 end
 
-function TimeService.Functions:DisplayTimeFromInt64(Time)
+function TimeService.Functions:DisplayTimeFromInt64(Time,IncludeDays)
 	Time = Time or 0
 	local Days = math.floor(Time/86400)
 	local Remaining = Time % 86400
+	if IncludeDays == false then
+		Remaining = Time
+	end
 	local Hours = math.floor(Remaining/3600)
 	Remaining = Remaining % 3600
 	local Minutes = math.floor(Remaining/60)
@@ -61,7 +64,12 @@ function TimeService.Functions:DisplayTimeFromInt64(Time)
 	if (Seconds < 10) then
 		Seconds = "0" .. tostring(Seconds)
 	end
-	local SetTime = tostring(Days)..':'..Hours..':'..Minutes..':'..Seconds
+	local SetTime = ""
+	if IncludeDays == false then
+		SetTime = tostring(Hours)..':'..Minutes..':'..Seconds
+	else
+		SetTime = tostring(Days)..':'..Hours..':'..Minutes..':'..Seconds
+	end
 	return SetTime
 end
 

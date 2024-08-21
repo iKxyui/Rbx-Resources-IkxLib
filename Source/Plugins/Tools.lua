@@ -5,7 +5,7 @@ Script Name : Tools
 
 ]]--
 
-local Tools = {UI = {}}
+local Tools = {UI = {}; TableMethods = {};}
 
 local RunService = game:GetService("RunService")
 
@@ -19,11 +19,30 @@ function Tools.UI:OffsetToScale(Offset)
 	return ({Offset[1] / ViewPortSize.X, Offset[2] / ViewPortSize.Y})
 end
 
-function Tools:SetModule(ModuleType,Function,Arg01,Arg02,Arg03,Arg04,Arg05)
-	coroutine.resume(coroutine.create(function()
-		local Module = require(ModuleType)
-		Module[Function](Arg01,Arg02,Arg03,Arg04,Arg05)
-	end))
+function Tools.TableMethods:SetModuleKeyOrder(Tbl) -- Creates a proxy table that tracks key order
+	local KeyOrder = {}
+	local MT = {
+		__index = Tbl,
+		__newindex = function(t, key, value)
+			if not rawget(Tbl, key) then
+				table.insert(KeyOrder, key)
+			end
+			rawset(Tbl,key,value)
+		end
+	}
+	return setmetatable(Tbl,MT), KeyOrder
+end
+
+function Tools.TableMethods:GetOrderedArray(Tbl,KeyOrder)
+	local NewArray = {}
+	for _,key in ipairs(KeyOrder) do
+		table.insert(NewArray,Tbl[key])
+	end
+	return NewArray
+end
+
+function Tools:SetModule(ModuleInstance:ModuleScript,Function,Args)
+	require(ModuleInstance)[Function](Args[1],Args[2],Args[3],Args[4],Args[5],Args[6],Args[7],Args[8],Args[9])
 end
 
 function Tools:SetThreadToBuiltInFunction(SetBuiltInFunction,...)
