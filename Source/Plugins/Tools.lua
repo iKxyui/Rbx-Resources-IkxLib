@@ -5,7 +5,7 @@ Script Name : Tools
 
 ]]--
 
-local Tools = {UI = {}; TableMethods = {};}
+local Tools = {Raw = {}; UI = {}; TableMethods = {};}
 
 local RunService = game:GetService("RunService")
 
@@ -41,16 +41,28 @@ function Tools.TableMethods:GetOrderedArray(Tbl,KeyOrder)
 	return NewArray
 end
 
-function Tools:SetModule(ModuleInstance:ModuleScript,Function,Args)
+function Tools.Raw:SetModule(ModuleInstance:ModuleScript,Function,Args)
 	require(ModuleInstance)[Function](Args[1],Args[2],Args[3],Args[4],Args[5],Args[6],Args[7],Args[8],Args[9])
 end
 
-function Tools:SetThreadToBuiltInFunction(SetBuiltInFunction,...)
+function Tools.Raw:SetThreadToBuiltInFunction(SetBuiltInFunction,...)
 	local Thread = coroutine.wrap(SetBuiltInFunction)
 	Thread(...)
 end
 
-function Tools:ApplyFunctionToObjectGroup(Group,SearchFor,...)
+function Tools.Raw:FastSpawn(Function,...)
+	local Bindable = Instance.new("BindableEvent")
+	local Args = table.pack(...)
+	local Connection
+	Connection = Bindable.Event:Connect(function ()
+		Bindable:Destroy()
+		Connection:Disconnect()
+		Function(table.unpack(Args))
+	end)
+	Bindable:Fire()
+end
+
+function Tools.Raw:ApplyFunctionToObjectGroup(Group,SearchFor,...)
 	SearchFor = SearchFor or {}
 	for _,GetChild in pairs(Group:GetChildren()) do
 		if (SearchFor.Name ~= nil and GetChild.Name == SearchFor.Name) then
@@ -67,7 +79,7 @@ function Tools:ApplyFunctionToObjectGroup(Group,SearchFor,...)
 	end
 end
 
-function Tools:SetDeltaStepToLoopFoundation()
+function Tools.Raw:SetDeltaStepToLoopFoundation()
 	RunService.PreSimulation:Wait()
 end
 
