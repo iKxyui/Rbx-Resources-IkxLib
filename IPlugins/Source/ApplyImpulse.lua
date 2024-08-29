@@ -1,21 +1,14 @@
---[[
-
-Script Type : Module
-Script Name : ApplyImpulse
-
-]]--
-
 local ApplyImpulse = {
 	SpecDirectory = workspace;
 }
 
-function ApplyImpulse:SetCurve(Character,Object,Properties)
+function ApplyImpulse:SetCurve(Parent,Object,Properties)
 	Properties.Gravity = Properties.Gravity or workspace.Gravity
 	Properties.DestroyOnContact = Properties.DestroyOnContact or false
 
 	local SetPath = Instance.new("Model")
 	SetPath.Name = "SetPath"
-	SetPath.Parent = Character
+	SetPath.Parent = Parent
 
 	local NodePart1 = Instance.new("Part")
 	NodePart1.Name = "START"
@@ -77,7 +70,7 @@ function ApplyImpulse:SetCurve(Character,Object,Properties)
 			local Pos = TargetObj.Position
 			local Size = TargetObj.Size/2
 			local Region = Region3.new(Pos - Size, Pos + Size)
-			local Ignore = {Character}
+			local Ignore = {Parent}
 			local Check = workspace:FindPartsInRegion3WithIgnoreList(Region,Ignore,math.huge)
 			for i,v in pairs(Check) do
 				if v:IsA("BasePart") and not v:IsAncestorOf(ApplyImpulse.SpecDirectory) then
@@ -85,7 +78,7 @@ function ApplyImpulse:SetCurve(Character,Object,Properties)
 					EndPath()
 					break
 				end
-				if not v:IsDescendantOf(Character) and v.CanTouch == true then
+				if not v:IsDescendantOf(Parent) and v.CanTouch == true then
 					EventFired = true
 					EndPath()
 					break

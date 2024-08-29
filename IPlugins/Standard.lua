@@ -27,12 +27,16 @@ ApplyImpulse:SetCurve - Used to move objects with a curvature
 
 [Debris2]
 Open Source module created by Kitsune
+Debris2:AddItem (item: Instance or table or RBXScriptConnection, lifeTime: number?) -> Debris
+Debris2:AddItems (arrayOfItems: {Instance, table, RBXScriptConnection}, lifeTime: number?) -> void
+Debris2:GetDebris (item: Instance or table or RBXScriptConnection) -> Debris
+Debris2:GetAllDebris () -> Debris2.Instances
 
 [EasingStyles]
 Module Library of core easing styles
 
 [EnumDebug]
-EnumDebug:GetEnumFromValue - Gets the Enum Item from a value
+Returns the Enum Item from a value
 
 [MaterialDecode]
 MaterialDecode:SetMaterialToString - Turns the Enum Material into a string

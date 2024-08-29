@@ -17,29 +17,16 @@ Script Name : Debris2
 			},
 		},
 	}
-	
-	-- Methods
-	AddItem (item: Instance or table or RBXScriptConnection, lifeTime: number?) -> Debris
-	AddItems (arrayOfItems: {Instance, table, RBXScriptConnection}, lifeTime: number?) -> void
-	GetAllDebris () -> Debris2.Instances
-	GetDebris (item: Instance or table or RBXScriptConnection) -> Debris
 --]]
 
 local Debris2 = {
 	Instances = {}
 }
 
---| SERVICES:
-local RunS = game:GetService("RunService")
-local Heatbeat = RunS.Heartbeat
-
---| MODULES:
-
---| VARIABLES:
+local RunService = game:GetService("RunService")
+local Heatbeat = RunService.Heartbeat
 
 local Instances = Debris2.Instances
-
---| TABLES:
 
 local Connections = {}
 
@@ -57,10 +44,6 @@ local METHODS = { -- add any Custom Destroy/Remove/Clear/CleanUp methods here
 	"disconnect",
 }
 
---| META TABLES:
-
---| FUNCTIONS:
-
 local function removeItem(typeOf, object)
 	if typeOf == "Instance" then
 		pcall(object.Destroy, object)
@@ -77,7 +60,6 @@ local function removeItem(typeOf, object)
 end
 
 local function addDebris(object, lifeTime)
-
 	local typeOf = typeof(object)
 
 	assert(ValidTypes[typeof(object)])
@@ -90,7 +72,7 @@ local function addDebris(object, lifeTime)
 	Instances[object] = {
 		["lifeTime"] = lifeTime,
 		removalTime = tick() + lifeTime,
-		--		Destroyed = nil, -- Destroyed: callback Function
+		-- Destroyed = nil, -- Destroyed: callback Function
 		Cancel = function() -- remove references and disconnect Hearbeat
 			Connections[object]:Disconnect()
 			table.remove(Instances,table.find(Instances, object))
@@ -115,13 +97,11 @@ local function addDebris(object, lifeTime)
 	return Instances[object]
 end
 
---| METHODS:
-
-function Debris2:AddItem(item, lifeTime) -- item: (Instance, table, RBXScriptConnection), lifeTime: number
+function Debris2:AddItem(item, lifeTime)
 	return addDebris(item, lifeTime)
 end
 
-function Debris2:AddItems(arrayOfItems, lifeTime) -- arrayOfItems: (Instance, table, RBXScriptConnection), lifeTime: number
+function Debris2:AddItems(arrayOfItems, lifeTime)
 	for _,item in ipairs(arrayOfItems) do
 		addDebris(item, lifeTime)
 	end
@@ -137,7 +117,4 @@ function Debris2:GetDebris(item)
 end
 Debris2.getDebris = Debris2.GetDebris
 
---| SCRIPTS:
-
--- return:
 return Debris2

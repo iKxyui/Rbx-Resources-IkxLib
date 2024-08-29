@@ -15,7 +15,7 @@ end
 
 function Services:MonoBehavior()
 	if PlSettings.EnableGetServicesMonoBehavior == false then
-		error("GetService MonoBehavior is disabled")
+		warn("GetService MonoBehavior is disabled")
 		return nil
 	end
 
