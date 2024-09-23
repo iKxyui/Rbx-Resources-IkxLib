@@ -42,7 +42,11 @@ Returns the Enum Item from a value
 MaterialDecode:SetMaterialToString - Turns the Enum Material into a string
 
 [MathFunctions]
-MaterialDecode:RoundNumber - Rounds and integer to a set number of decimal places
+MathFunctions:RoundNumber - Rounds an integer to a set number of decimal places
+MathFunctions:GetPercentageFromLowToHigh - Returns the percent of a low number to high number
+MathFunctions:GenerateRandomSeed - Returns a new integer
+MathFunctions:SetMinimum - Returns a number from a minimum cap
+MathFunctions:SetMaximum - Returns a number from a maximum cap
 
 [RemoteInvoke]
 RemoteInvoke:InvokeAllClients - Uses the same functionality as Remote:FireAllClients() instead uses the Instance RemoteFunction as the first argument/parameter
