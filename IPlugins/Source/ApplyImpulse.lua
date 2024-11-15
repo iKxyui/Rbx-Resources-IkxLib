@@ -1,3 +1,10 @@
+--[[
+
+Script Type : Module
+Script Name : ApplyImpulse
+
+]]--
+
 local ApplyImpulse = {
 	Region3DirectoryCheck = workspace;
 }

@@ -43,6 +43,10 @@ function TimeService.RS:SetDelay(Int)
 	repeat Delta = Delta + game:GetService("RunService").Heartbeat:Wait() until Delta > Int
 end
 
+function TimeService.Functions:ConvertDeltaToOne(Delta)
+	return Delta/1 * 60
+end
+
 function TimeService.Functions:DisplayTimeFromInt64(Time,IncludeDays)
 	Time = Time or 0
 	local Days = math.floor(Time/86400)
