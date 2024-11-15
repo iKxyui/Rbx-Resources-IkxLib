@@ -1,5 +1,5 @@
 local ApplyImpulse = {
-	SpecDirectory = workspace;
+	Region3DirectoryCheck = workspace;
 }
 
 function ApplyImpulse:SetCurve(Parent,Object,Properties)
@@ -73,7 +73,7 @@ function ApplyImpulse:SetCurve(Parent,Object,Properties)
 			local Ignore = {Parent}
 			local Check = workspace:FindPartsInRegion3WithIgnoreList(Region,Ignore,math.huge)
 			for i,v in pairs(Check) do
-				if v:IsA("BasePart") and not v:IsAncestorOf(ApplyImpulse.SpecDirectory) then
+				if v:IsA("BasePart") and not v:IsAncestorOf(ApplyImpulse.Region3DirectoryCheck) then
 					EventFired = true
 					EndPath()
 					break
