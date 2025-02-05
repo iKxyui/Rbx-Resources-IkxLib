@@ -11,10 +11,10 @@ Script Name : EasingStyles
 -- c = change == ending - beginning
 -- d = duration (total time)
 
+local pi = math.pi
 local pow = math.pow
 local sin = math.sin
 local cos = math.cos
-local pi = math.pi
 local sqrt = math.sqrt
 local abs = math.abs
 local asin  = math.asin
