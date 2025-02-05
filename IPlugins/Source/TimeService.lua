@@ -1,6 +1,6 @@
 --[[
 
-Script Type : Modul
+Script Type : Module
 Script Name : TimeService
 
 ]]--
