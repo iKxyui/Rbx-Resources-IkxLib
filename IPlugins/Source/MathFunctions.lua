@@ -13,9 +13,9 @@ function MathFunctions:RoundNumber(Number,DecimalPlaces)
 	return tonumber(string.format("%." .. (DecimalPlaces or 0) .. "f", Number))
 end
 
-function MathFunctions:GetPercentageFromLowToHigh(x,Low,High)
+function MathFunctions:GetPercentageFromLowToHigh(X,Low,High)
 	local Range = High - Low
-	return LuaMath.clamp(1 - (x - Low) / Range, 0, 1)
+	return LuaMath.clamp(1 - (X - Low) / Range, 0, 1)
 end
 
 function MathFunctions:GenerateRandomSeed()
