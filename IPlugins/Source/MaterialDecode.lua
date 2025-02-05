@@ -59,7 +59,7 @@ function MaterialDecode:SetMaterialToString(Value)
 	return MaterialDecode.MaterialList[Value]
 end
 
-function MaterialDecode:GetMaterialHashData(MaterialType)
+function MaterialDecode:GetMaterialStringFormat(MaterialType)
 	local Success, Material = xpcall(function()
 		return Enum.Material:FromName(MaterialType).Name
 	end, function()
