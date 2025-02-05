@@ -59,9 +59,9 @@ function MaterialDecode:SetMaterialToString(Value)
 	return MaterialDecode.MaterialList[Value]
 end
 
-function MaterialDecode:GetMaterialStringFormat(MaterialType)
+function MaterialDecode:GetMaterialEnumFormat(MaterialType)
 	local Success, Material = xpcall(function()
-		return Enum.Material:FromName(MaterialType).Name
+		return Enum.Material[MaterialType]
 	end, function()
 		return "Unknown Material"
 	end)

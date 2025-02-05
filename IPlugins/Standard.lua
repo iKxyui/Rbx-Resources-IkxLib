@@ -40,6 +40,7 @@ Returns the Enum Item from a value
 
 [MaterialDecode]
 MaterialDecode:SetMaterialToString - Turns the Enum Material into a string
+MaterialDecode:GetMaterialStringFormat - Converts material string to enum format
 
 [MathFunctions]
 MathFunctions:RoundNumber - Rounds an integer to a set number of decimal places
