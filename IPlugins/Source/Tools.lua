@@ -54,7 +54,7 @@ function Tools.Raw:FastSpawn(Function,...)
 	local Bindable = Instance.new("BindableEvent")
 	local Args = table.pack(...)
 	local Connection
-	Connection = Bindable.Event:Connect(function ()
+	Connection = Bindable.Event:Connect(function()
 		Bindable:Destroy()
 		Connection:Disconnect()
 		Function(table.unpack(Args))
