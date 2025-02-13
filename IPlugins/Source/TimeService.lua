@@ -5,13 +5,14 @@ Script Name : TimeService
 
 ]]--
 
+local PlSettings = require(script.Parent._Settings)
+local LuaMath = math
+
 local TimeService = {
 	OS = {};
 	RS = {};
 	Functions = {};
 }
-
-local PlSettings = require(script.Parent._SETTINGS)
 
 local DelayTypes = {
 	[""] = function(Int)
@@ -44,7 +45,7 @@ function TimeService.RS:SetDelay(Int)
 end
 
 function TimeService.Functions:ConvertDeltaToOne(Delta)
-	return Delta/1 * 60
+	return (Delta/1 * LuaMath.floor(PlSettings.ArtificialFrameRate)) + 60 - 60
 end
 
 function TimeService.Functions:DisplayTimeFromInt64(Time,IncludeDays)
